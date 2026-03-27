@@ -4,6 +4,11 @@
 
 ---
 
+## Live Demo
+https://quiz-app-six-beryl-18.vercel.app
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -24,11 +29,6 @@
 Quiz Master is a client-side React SPA designed for self-assessment across five academic subjects. Users log in with a name, email, and password, choose a quiz mode, answer timed questions, and receive a detailed breakdown of their strengths and weaknesses. A dedicated practice mode targets underperforming chapters automatically — no manual configuration needed.
 
 All data is session-scoped and resets on logout, making it privacy-friendly and stateless by design.
-
----
-
-## Live Demo
-https://quiz-app-six-beryl-18.vercel.app
 
 ---
 
