@@ -27,6 +27,11 @@ All data is session-scoped and resets on logout, making it privacy-friendly and 
 
 ---
 
+## Live Demo
+https://quiz-app-six-beryl-18.vercel.app
+
+---
+
 ## Getting Started
 
 ### Prerequisites
