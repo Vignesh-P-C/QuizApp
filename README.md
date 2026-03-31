@@ -9,7 +9,7 @@ https://quiz-app-six-beryl-18.vercel.app
 
 ---
 
-## 📋 Table of Contents
+## 📋 Table of Contents:
 
 - [Overview](#overview)
 - [Getting Started](#getting-started)
