@@ -255,11 +255,17 @@ State lives entirely in `QuizContext.jsx` using `useReducer`. All page component
 ## Screenshots
 Login
 ![Login](screenshots/login.png)
+Dashboard
 ![dashboard](screenshots/dashboard.png)
+Selected Subjects
 ![Selected Subjects](screenshots/selected-subjects.png)
+Quiz
 ![Quiz](screenshots/quiz.png)
+Confirm Submit
 ![Confirm Submit](screenshots/confirm-submit.png)
+Result
 ![Result](screenshots/result.png)
+Report
 ![Report](screenshots/report.png)
 
 
