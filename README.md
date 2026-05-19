@@ -258,11 +258,11 @@ Login
 Dashboard
 ![dashboard](screenshots/dashboard.png)
 Selected Subjects
-![Selected Subjects](screenshots/selected-Subjects.png)
+![Selected Subjects](screenshots/selectedsubjects.png)
 Quiz
 ![Quiz](screenshots/quiz.png)
 Confirm Submit
-![Confirm Submit](screenshots/confirm-submit.png)
+![Confirm Submit](screenshots/confirmsubmit.png)
 Result
 ![Result](screenshots/result.png)
 Report
