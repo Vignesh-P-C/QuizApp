@@ -258,7 +258,7 @@ Login
 Dashboard
 ![dashboard](screenshots/dashboard.png)
 Selected Subjects
-![Selected Subjects](screenshots/selected-subjects.png)
+![Selected Subjects](screenshots/selected-Subjects.png)
 Quiz
 ![Quiz](screenshots/quiz.png)
 Confirm Submit
