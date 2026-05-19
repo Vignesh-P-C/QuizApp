@@ -21,6 +21,8 @@ https://quiz-app-six-beryl-18.vercel.app
 - [State Management](#state-management)
 - [Bug Fixes Applied](#bug-fixes-applied)
 - [Scripts](#scripts)
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
 
 ---
 
@@ -41,9 +43,9 @@ All data is session-scoped and resets on logout, making it privacy-friendly and 
 
 ### Installation
 
-```bash
+```bashhttps://github.com/Vignesh-P-C/QuizApp
 # Clone the repo
-git clone https://github.com/your-username/quiz-master.git
+git clone 
 cd quiz-master
 
 # Install dependencies
@@ -250,6 +252,23 @@ State lives entirely in `QuizContext.jsx` using `useReducer`. All page component
 
 ---
 
+## Screenshots
+Login
+![Login](screenshots/login.png)
+![dashboard](screenshots/dashboard.png)
+![Selected Subjects](screenshots/selected-subjects.png)
+![Quiz](screenshots/quiz.png)
+![Confirm Submit](screenshots/confirm-submit.png)
+![Result](screenshots/result.png)
+![Report](screenshots/report.png)
+
+
+---
+
 ## License
 
 MIT — free to use, modify, and distribute.
+
+---
+
+*Made by Vignesh P C — <a href="https://github.com/Vignesh-P-C"><img src="screenshots/github.png" width="24" height="24"/></a>*
