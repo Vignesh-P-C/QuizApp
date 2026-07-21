@@ -27,10 +27,10 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
 
   return (
     <div
-      className={`min-h-screen p-4 transition-colors duration-300 ${
+      className={`min-h-screen p-4 transition-all duration-500 ${
         d
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
-          : 'bg-gradient-to-br from-blue-50 to-indigo-100'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 animate-gradient-dark'
+          : 'bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 animate-gradient'
       }`}
     >
       <div className="max-w-3xl mx-auto">
@@ -38,23 +38,23 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => onNavigate('home')}
-            className={`font-semibold text-sm flex items-center gap-1 transition-colors ${
-              d ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'
+            className={`font-semibold text-sm flex items-center gap-1 transition-all duration-200 hover:scale-105 ${
+              d ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-800'
             }`}
           >
             ← Back to Home
           </button>
-          <h1 className={`text-2xl font-extrabold ${d ? 'text-white' : 'text-gray-900'}`}>
+          <h1 className={`text-2xl font-extrabold animate-fadeInDown ${d ? 'text-white' : 'text-gray-900'}`}>
             Session Report
           </h1>
-          <div className={`text-sm font-medium ${d ? 'text-slate-400' : 'text-gray-500'}`}>
-            {userName}'s Session
+          <div className={`text-sm font-medium animate-fadeInDown delay-100 ${d ? 'text-slate-400' : 'text-gray-500'}`}>
+            {userName}&apos;s Session
           </div>
         </div>
 
         {/* Summary Cards */}
         {totalQuizzes > 0 && (
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-4 mb-8 stagger-fade">
             {[
               { label: 'Quizzes Taken', value: totalQuizzes, icon: '📝' },
               { label: 'Average Score', value: `${avgScore}%`, icon: '📊' },
@@ -62,8 +62,8 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
             ].map((stat) => (
               <div
                 key={stat.label}
-                className={`rounded-2xl p-5 text-center shadow-lg transition-colors ${
-                  d ? 'bg-slate-800 border border-slate-700' : 'bg-white'
+                className={`hover-card rounded-2xl p-5 text-center shadow-lg transition-all duration-300 ${
+                  d ? 'bg-slate-800/60 border border-slate-700/50 backdrop-blur-sm' : 'glass-card'
                 }`}
               >
                 <div className="text-3xl mb-2">{stat.icon}</div>
@@ -84,8 +84,8 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
 
         {/* Quiz History */}
         <div
-          className={`rounded-2xl shadow-lg p-6 transition-colors ${
-            d ? 'bg-slate-800 border border-slate-700' : 'bg-white'
+          className={`rounded-2xl shadow-lg p-6 transition-all duration-500 animate-fadeInUp ${
+            d ? 'bg-slate-800/60 border border-slate-700/50 backdrop-blur-sm' : 'glass-card'
           }`}
         >
           <h2
@@ -105,13 +105,13 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
               </p>
               <button
                 onClick={() => onNavigate('home')}
-                className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-all"
+                className="mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-all shadow-lg shadow-indigo-500/25"
               >
                 Take Your First Quiz
               </button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-4 stagger-fade">
               {sessionHistory.map((entry, idx) => {
                 const badge = getScoreBadge(entry.percentage);
                 return (

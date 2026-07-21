@@ -1,4 +1,5 @@
 import { SUBJECTS } from '../data/questions';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 export default function Home({
   onNavigate,
@@ -10,6 +11,7 @@ export default function Home({
   sessionCount,
 }) {
   const d = isDark;
+  const [subjectsRef, subjectsVisible] = useIntersectionObserver({ threshold: 0.2 });
 
   const handleModeSelection = (mode) => {
     if (mode === 'all') {
@@ -22,30 +24,30 @@ export default function Home({
 
   return (
     <div
-      className={`min-h-screen p-4 transition-colors duration-300 ${
+      className={`min-h-screen p-4 transition-all duration-500 ${
         d
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
-          : 'bg-gradient-to-br from-blue-50 to-indigo-100'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 animate-gradient-dark'
+          : 'bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 animate-gradient'
       }`}
     >
       {/* Top Nav */}
       <div className="max-w-3xl mx-auto flex justify-between items-center mb-10">
-        <div className={`text-sm font-semibold ${d ? 'text-slate-300' : 'text-gray-600'}`}>
+        <div className={`text-sm font-semibold animate-fadeInDown ${d ? 'text-slate-300' : 'text-gray-600'}`}>
           👋 Welcome back, <span className={d ? 'text-white' : 'text-gray-900'}>{userName}</span>
         </div>
         <div className="flex items-center gap-3">
           {/* Report Button */}
           <button
             onClick={() => onNavigate('report')}
-            className={`relative text-sm font-semibold px-4 py-2 rounded-xl transition-all ${
+            className={`hover-card relative text-sm font-semibold px-4 py-2 rounded-xl transition-all ${
               d
-                ? 'bg-slate-700 text-slate-200 hover:bg-slate-600'
-                : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
+                ? 'bg-slate-700/70 text-slate-200 hover:bg-slate-600'
+                : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white shadow-sm'
             }`}
           >
             📊 Report
             {sessionCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center pulse-dot">
                 {sessionCount}
               </span>
             )}
@@ -54,23 +56,24 @@ export default function Home({
           {/* Dark Mode Toggle */}
           <button
             onClick={onToggleDark}
-            className={`p-2 rounded-xl transition-all ${
+            className={`p-3 rounded-2xl transition-all duration-300 hover:scale-110 active:scale-95 wobble-icon ${
               d
-                ? 'bg-slate-700 text-yellow-400 hover:bg-slate-600'
-                : 'bg-white text-slate-600 hover:bg-gray-100 shadow-sm'
+                ? 'bg-slate-700/70 text-yellow-400 hover:bg-slate-600'
+                : 'bg-white/80 backdrop-blur-sm text-slate-600 hover:bg-white shadow-sm'
             }`}
             title="Toggle theme"
+            aria-label="Toggle dark mode"
           >
-            {d ? '☀️' : '🌙'}
+            <span className="text-lg">{d ? '☀️' : '🌙'}</span>
           </button>
 
           {/* Logout */}
           <button
             onClick={onLogout}
-            className={`text-sm font-semibold px-4 py-2 rounded-xl transition-all ${
+            className={`text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 ${
               d
-                ? 'bg-red-900 text-red-300 hover:bg-red-800'
-                : 'bg-red-50 text-red-600 hover:bg-red-100'
+                ? 'bg-red-900/70 text-red-300 hover:bg-red-800'
+                : 'bg-red-50/80 text-red-600 hover:bg-red-100 backdrop-blur-sm'
             }`}
           >
             Logout
@@ -82,13 +85,13 @@ export default function Home({
         {/* Title */}
         <div className="text-center mb-12">
           <h1
-            className={`text-5xl font-extrabold tracking-tight mb-3 ${
+            className={`text-5xl font-extrabold tracking-tight mb-3 animate-fadeInUp ${
               d ? 'text-white' : 'text-gray-900'
             }`}
           >
             Quiz Master
           </h1>
-          <p className={`text-xl ${d ? 'text-slate-400' : 'text-gray-500'}`}>
+          <p className={`text-xl animate-fadeInUp delay-200 ${d ? 'text-slate-400' : 'text-gray-500'}`}>
             Test your knowledge across multiple subjects
           </p>
         </div>
@@ -97,62 +100,63 @@ export default function Home({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div
             onClick={() => handleModeSelection('single')}
-            className={`p-8 rounded-2xl shadow-lg cursor-pointer hover:shadow-xl hover:scale-105 transition-all border ${
+            className={`hover-card p-8 rounded-2xl shadow-lg cursor-pointer transition-all duration-300 border animate-fadeInUp delay-100 ${
               d
-                ? 'bg-slate-800 border-slate-700 hover:border-blue-500'
-                : 'bg-white border-gray-100 hover:border-blue-200'
+                ? 'bg-slate-800/70 border-slate-700/50 hover:border-indigo-500 backdrop-blur-sm'
+                : 'bg-white/80 border-gray-100 hover:border-indigo-300 backdrop-blur-sm'
             }`}
           >
-            <div className="text-4xl mb-4">📚</div>
+            <div className="text-4xl mb-4 float-emoji">📚</div>
             <h2 className={`text-2xl font-bold mb-3 ${d ? 'text-white' : 'text-gray-900'}`}>
               Single Subject
             </h2>
             <p className={`mb-5 text-sm leading-relaxed ${d ? 'text-slate-400' : 'text-gray-500'}`}>
               Choose a specific subject and test yourself with 15 questions (3 per chapter)
             </p>
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all">
+            <button className="btn-glow w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all">
               Get Started →
             </button>
           </div>
 
           <div
             onClick={() => handleModeSelection('all')}
-            className={`p-8 rounded-2xl shadow-lg cursor-pointer hover:shadow-xl hover:scale-105 transition-all border ${
+            className={`hover-card p-8 rounded-2xl shadow-lg cursor-pointer transition-all duration-300 border animate-fadeInUp delay-200 ${
               d
-                ? 'bg-slate-800 border-slate-700 hover:border-indigo-500'
-                : 'bg-white border-gray-100 hover:border-indigo-200'
+                ? 'bg-slate-800/70 border-slate-700/50 hover:border-purple-500 backdrop-blur-sm'
+                : 'bg-white/80 border-gray-100 hover:border-purple-300 backdrop-blur-sm'
             }`}
           >
-            <div className="text-4xl mb-4">🌟</div>
+            <div className="text-4xl mb-4 float-emoji">🌟</div>
             <h2 className={`text-2xl font-bold mb-3 ${d ? 'text-white' : 'text-gray-900'}`}>
               All Subjects
             </h2>
             <p className={`mb-5 text-sm leading-relaxed ${d ? 'text-slate-400' : 'text-gray-500'}`}>
               Challenge yourself with questions from all 5 subjects (45 questions total)
             </p>
-            <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all">
+            <button className="btn-glow w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all">
               Get Started →
             </button>
           </div>
         </div>
 
-        {/* Subjects */}
+        {/* Subjects - Scroll Animation */}
         <div
-          className={`rounded-2xl shadow-lg p-6 transition-colors ${
-            d ? 'bg-slate-800 border border-slate-700' : 'bg-white'
+          ref={subjectsRef}
+          className={`rounded-2xl shadow-lg p-6 transition-all duration-300 animate-fadeInUp delay-300 ${
+            d ? 'bg-slate-800/60 border border-slate-700/50 backdrop-blur-sm' : 'glass-card'
           }`}
         >
           <h3 className={`text-lg font-bold mb-5 ${d ? 'text-white' : 'text-gray-900'}`}>
-            Available Subjects
+            <span className="float-emoji">📚</span> Available Subjects
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {Object.values(SUBJECTS).map((subject) => (
+          <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 ${subjectsVisible ? 'stagger-fade' : ''}`}>
+            {Object.values(SUBJECTS).map((subject, idx) => (
               <div
                 key={subject}
-                className={`p-4 rounded-xl text-center transition-colors ${
+                className={`p-4 rounded-xl text-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-default ${
                   d
-                    ? 'bg-slate-700 border border-slate-600'
-                    : 'bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100'
+                    ? 'bg-slate-700 border border-slate-600 hover:border-indigo-500 hover:bg-slate-700'
+                    : 'bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 hover:border-indigo-300'
                 }`}
               >
                 <p className={`font-semibold text-sm ${d ? 'text-slate-200' : 'text-gray-900'}`}>

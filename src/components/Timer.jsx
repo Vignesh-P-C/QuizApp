@@ -28,24 +28,41 @@ export default function Timer({ initialSeconds, onTimeUp, isDark }) {
       <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${d ? 'text-slate-400' : 'text-gray-500'}`}>
         Time Remaining
       </p>
-      <p
-        className={`text-3xl font-black tabular-nums transition-colors ${
-          isCritical
-            ? 'text-red-500 animate-pulse'
-            : isLow
-            ? 'text-yellow-500'
-            : d
-            ? 'text-blue-400'
-            : 'text-blue-600'
-        }`}
-      >
-        {minutes}:{displaySeconds}
-      </p>
+      <div className="relative inline-flex items-center justify-center">
+        <p
+          className={`text-3xl font-black tabular-nums transition-all duration-300 ${
+            isCritical
+              ? 'text-red-500 timer-critical'
+              : isLow
+              ? 'text-yellow-500'
+              : d
+              ? 'text-indigo-400'
+              : 'text-indigo-600'
+          }`}
+        >
+          {minutes}:{displaySeconds}
+        </p>
+      </div>
+      {/* Mini visual bar */}
+      <div className={`mt-3 h-1.5 rounded-full overflow-hidden ${d ? 'bg-slate-700' : 'bg-gray-200'}`}>
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ${
+            isCritical
+              ? 'bg-red-500'
+              : isLow
+              ? 'bg-yellow-500'
+              : d
+              ? 'bg-indigo-500'
+              : 'bg-indigo-500'
+          }`}
+          style={{ width: `${(seconds / initialSeconds) * 100}%` }}
+        />
+      </div>
       {isLow && !isCritical && (
-        <p className="text-xs text-yellow-500 font-medium mt-1">Running low!</p>
+        <p className="text-xs text-yellow-500 font-bold mt-2 animate-pulse">Running low!</p>
       )}
       {isCritical && (
-        <p className="text-xs text-red-500 font-medium mt-1">Hurry up!</p>
+        <p className="text-xs text-red-500 font-bold mt-2 timer-critical">Hurry up!</p>
       )}
     </div>
   );

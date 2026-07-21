@@ -26,31 +26,31 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
 
   return (
     <div
-      className={`min-h-screen p-4 transition-colors duration-300 ${
+      className={`min-h-screen p-4 transition-all duration-500 ${
         d
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
-          : 'bg-gradient-to-br from-blue-50 to-indigo-100'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 animate-gradient-dark'
+          : 'bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 animate-gradient'
       }`}
     >
       <div className="max-w-2xl mx-auto">
         <button
           onClick={() => onNavigate('home')}
-          className={`mb-6 font-semibold text-sm flex items-center gap-1 transition-colors ${
-            d ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'
+          className={`mb-6 font-semibold text-sm flex items-center gap-1 transition-all duration-200 hover:scale-105 ${
+            d ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-800'
           }`}
         >
           ← Back to Home
         </button>
 
         <div
-          className={`p-8 rounded-2xl shadow-lg transition-colors ${
-            d ? 'bg-slate-800 border border-slate-700' : 'bg-white'
+          className={`p-8 rounded-2xl shadow-lg transition-all duration-500 animate-fadeInUp ${
+            d ? 'bg-slate-800/60 border border-slate-700/50 backdrop-blur-xl' : 'glass-card'
           }`}
         >
-          <h1 className={`text-3xl font-extrabold mb-2 ${d ? 'text-white' : 'text-gray-900'}`}>
-            Single Subject Quiz
+          <h1 className={`text-3xl font-extrabold mb-2 animate-fadeInDown ${d ? 'text-white' : 'text-gray-900'}`}>
+            <span className="float-emoji">📝</span> Single Subject Quiz
           </h1>
-          <p className={`text-sm mb-8 ${d ? 'text-slate-400' : 'text-gray-500'}`}>
+          <p className={`text-sm mb-8 animate-fadeInUp delay-100 ${d ? 'text-slate-400' : 'text-gray-500'}`}>
             Logged in as <strong className={d ? 'text-slate-200' : 'text-gray-700'}>{state.userName}</strong>
           </p>
 
@@ -63,28 +63,28 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
                 (you can choose multiple)
               </span>
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 stagger-fade">
               {Object.values(SUBJECTS).map((subject) => {
                 const selected = selectedSubjects.includes(subject);
                 return (
                   <button
                     key={subject}
                     onClick={() => toggleSubject(subject)}
-                    className={`p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`hover-card p-4 rounded-xl border-2 transition-all text-left wobble-icon ${
                       selected
                         ? d
-                          ? 'border-blue-500 bg-blue-900/30'
-                          : 'border-blue-600 bg-blue-50'
+                          ? 'border-indigo-500 bg-indigo-900/30'
+                          : 'border-indigo-600 bg-indigo-50'
                         : d
-                        ? 'border-slate-600 bg-slate-700 hover:border-slate-500'
-                        : 'border-gray-200 bg-white hover:border-gray-300'
+                        ? 'border-slate-600 bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm'
+                        : 'border-gray-200 bg-white/80 hover:border-gray-300 backdrop-blur-sm'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-300 ${
                           selected
-                            ? 'border-blue-600 bg-blue-600'
+                            ? 'border-indigo-600 bg-indigo-600 scale-110'
                             : d
                             ? 'border-slate-500'
                             : 'border-gray-300'
@@ -96,16 +96,15 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
                           </svg>
                         )}
                       </div>
-                      <span
-                        className={`font-semibold text-sm ${
-                          selected
-                            ? d
-                              ? 'text-blue-300'
-                              : 'text-blue-700'
-                            : d
-                            ? 'text-slate-200'
-                            : 'text-gray-900'
-                        }`}
+                      <span                          className={`font-semibold text-sm ${
+                            selected
+                              ? d
+                                ? 'text-indigo-300'
+                                : 'text-indigo-700'
+                              : d
+                              ? 'text-slate-200'
+                              : 'text-gray-900'
+                          }`}
                       >
                         {subject}
                       </span>
@@ -116,10 +115,9 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
             </div>
           </div>
 
-          <div
-            className={`p-4 rounded-xl mb-6 text-sm ${
-              d ? 'bg-blue-900/20 border border-blue-800/50 text-blue-300' : 'bg-blue-50 text-blue-800'
-            }`}
+          <div              className={`p-4 rounded-xl mb-6 text-sm animate-fadeInUp delay-300 ${
+                d ? 'bg-indigo-900/20 border border-indigo-800/50 text-indigo-300' : 'bg-indigo-50 text-indigo-800'
+              }`}
           >
             📝 You'll answer <strong>15 questions (3 per chapter)</strong> from your selected subject(s).
           </div>
@@ -127,10 +125,10 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
           <button
             onClick={handleStartQuiz}
             disabled={selectedSubjects.length === 0}
-            className={`w-full font-bold py-3.5 px-4 rounded-xl transition-all text-sm ${
+            className={`btn-glow w-full font-bold py-3.5 px-4 rounded-xl transition-all text-sm animate-fadeInUp delay-400 ${
               selectedSubjects.length === 0
-                ? 'bg-blue-300 cursor-not-allowed text-white'
-                : 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-200/50'
+                ? 'bg-indigo-300 cursor-not-allowed text-white'
+                : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/25'
             }`}
           >
             Start Quiz →

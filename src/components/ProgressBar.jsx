@@ -8,13 +8,13 @@ export default function ProgressBar({ current, total, isDark }) {
         <p className={`text-sm font-semibold ${d ? 'text-slate-300' : 'text-gray-700'}`}>
           Question {current} of {total}
         </p>
-        <p className={`text-sm font-bold ${d ? 'text-blue-400' : 'text-blue-600'}`}>
+        <p className={`text-sm font-bold ${d ? 'text-indigo-400' : 'text-indigo-600'}`}>
           {Math.round(percentage)}%
         </p>
       </div>
-      <div className={`w-full rounded-full h-2.5 overflow-hidden ${d ? 'bg-slate-700' : 'bg-gray-200'}`}>
+      <div className={`w-full rounded-full h-3 overflow-hidden ${d ? 'bg-slate-700' : 'bg-gray-200'}`}>
         <div
-          className="bg-blue-600 h-full rounded-full transition-all duration-500"
+          className="progress-gradient h-full rounded-full transition-all duration-500 shadow-lg shadow-indigo-500/25"
           style={{ width: `${percentage}%` }}
         />
       </div>

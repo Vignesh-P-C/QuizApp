@@ -33,7 +33,7 @@ const reducer = (state, action) => {
         userEmail: action.payload.email,
         isLoggedIn: true,
         page: 'home',
-        sessionHistory: [],
+        sessionHistory: action.payload.history || [],
       };
 
     case 'LOGOUT':
@@ -123,8 +123,20 @@ export function QuizProvider({ children }) {
     localStorage.setItem('quizDarkMode', state.isDark);
   }, [state.isDark]);
 
+  // Persist session history to localStorage (keyed by email)
+  useEffect(() => {
+    if (state.userEmail) {
+      const key = `quizHistory_${state.userEmail}`;
+      localStorage.setItem(key, JSON.stringify(state.sessionHistory));
+    }
+  }, [state.sessionHistory, state.userEmail]);
+
   const handleLogin = useCallback((name, email) => {
-    dispatch({ type: 'LOGIN', payload: { name, email } });
+    // Restore session history from localStorage if available
+    const key = `quizHistory_${email}`;
+    const saved = localStorage.getItem(key);
+    const history = saved ? JSON.parse(saved) : [];
+    dispatch({ type: 'LOGIN', payload: { name, email, history } });
   }, []);
 
   const handleLogout = useCallback(() => {

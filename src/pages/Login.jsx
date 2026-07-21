@@ -39,50 +39,55 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
 
   return (
     <div
-      className={`min-h-screen flex items-center justify-center p-4 transition-colors duration-300 ${
+      className={`min-h-screen flex items-center justify-center p-4 transition-all duration-500 ${
         d
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
-          : 'bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 animate-gradient-dark'
+          : 'bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 animate-gradient'
       }`}
     >
       {/* Dark mode toggle */}
       <button
         onClick={onToggleDark}
-        className={`fixed top-4 right-4 p-2 rounded-full transition-all ${
-          d ? 'bg-slate-700 text-yellow-400 hover:bg-slate-600' : 'bg-white text-slate-600 hover:bg-gray-100 shadow'
+        className={`fixed top-4 right-4 z-50 p-3 rounded-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
+          d
+            ? 'bg-slate-800/80 text-yellow-400 hover:bg-slate-700 shadow-lg shadow-black/20'
+            : 'bg-white/80 text-slate-600 hover:bg-white shadow-lg shadow-black/5 backdrop-blur-md'
         }`}
         title="Toggle theme"
+        aria-label="Toggle dark mode"
       >
-        {d ? '☀️' : '🌙'}
+        <span className="text-xl">{d ? '☀️' : '🌙'}</span>
       </button>
 
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md animate-fadeInUp">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="text-6xl mb-4">🎓</div>
+          <div className="celebration-pop text-7xl mb-4 float-emoji">🎓</div>
           <h1
-            className={`text-4xl font-extrabold tracking-tight mb-2 ${
+            className={`text-5xl font-extrabold tracking-tight mb-3 ${
               d ? 'text-white' : 'text-gray-900'
             }`}
           >
             Quiz Master
           </h1>
-          <p className={`text-base ${d ? 'text-slate-400' : 'text-gray-500'}`}>
+          <p className={`text-base font-medium ${d ? 'text-slate-400' : 'text-gray-500'}`}>
             Sign in to start your learning journey
           </p>
         </div>
 
         {/* Card */}
         <div
-          className={`rounded-2xl shadow-2xl p-8 transition-colors duration-300 ${
-            d ? 'bg-slate-800 border border-slate-700' : 'bg-white border border-gray-100'
+          className={`rounded-2xl shadow-2xl p-8 transition-all duration-500 ${
+            d
+              ? 'bg-slate-800/60 border border-slate-700/50 backdrop-blur-xl'
+              : 'glass-card'
           }`}
         >
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
             {/* Name */}
-            <div>
+            <div className="animate-fadeInUp delay-100">
               <label
-                className={`block text-sm font-semibold mb-1.5 ${
+                className={`block text-sm font-bold mb-2 ${
                   d ? 'text-slate-300' : 'text-gray-700'
                 }`}
               >
@@ -93,23 +98,25 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                 value={form.name}
                 onChange={handleChange('name')}
                 placeholder="Username"
-                className={`w-full px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all outline-none ${
+                className={`w-full px-4 py-3.5 rounded-xl border-2 text-sm font-medium transition-all outline-none focus:scale-[1.02] ${
                   errors.name
-                    ? 'border-red-500 bg-red-50'
+                    ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700 text-white placeholder-slate-400 focus:border-blue-500'
-                    : 'border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white'
+                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.name && (
-                <p className="mt-1 text-xs text-red-500 font-medium">{errors.name}</p>
+                <p className="mt-1.5 text-xs text-red-500 font-bold flex items-center gap-1">
+                  <span>⚠</span> {errors.name}
+                </p>
               )}
             </div>
 
             {/* Email */}
-            <div>
+            <div className="animate-fadeInUp delay-200">
               <label
-                className={`block text-sm font-semibold mb-1.5 ${
+                className={`block text-sm font-bold mb-2 ${
                   d ? 'text-slate-300' : 'text-gray-700'
                 }`}
               >
@@ -120,23 +127,25 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                 value={form.email}
                 onChange={handleChange('email')}
                 placeholder="Email Address"
-                className={`w-full px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all outline-none ${
+                className={`w-full px-4 py-3.5 rounded-xl border-2 text-sm font-medium transition-all outline-none focus:scale-[1.02] ${
                   errors.email
-                    ? 'border-red-500 bg-red-50'
+                    ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700 text-white placeholder-slate-400 focus:border-blue-500'
-                    : 'border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white'
+                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.email && (
-                <p className="mt-1 text-xs text-red-500 font-medium">{errors.email}</p>
+                <p className="mt-1.5 text-xs text-red-500 font-bold flex items-center gap-1">
+                  <span>⚠</span> {errors.email}
+                </p>
               )}
             </div>
 
             {/* Password */}
-            <div>
+            <div className="animate-fadeInUp delay-300">
               <label
-                className={`block text-sm font-semibold mb-1.5 ${
+                className={`block text-sm font-bold mb-2 ${
                   d ? 'text-slate-300' : 'text-gray-700'
                 }`}
               >
@@ -147,44 +156,51 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                 value={form.password}
                 onChange={handleChange('password')}
                 placeholder="Min. 6 characters"
-                className={`w-full px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all outline-none ${
+                className={`w-full px-4 py-3.5 rounded-xl border-2 text-sm font-medium transition-all outline-none focus:scale-[1.02] ${
                   errors.password
-                    ? 'border-red-500 bg-red-50'
+                    ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700 text-white placeholder-slate-400 focus:border-blue-500'
-                    : 'border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white'
+                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.password && (
-                <p className="mt-1 text-xs text-red-500 font-medium">{errors.password}</p>
+                <p className="mt-1.5 text-xs text-red-500 font-bold flex items-center gap-1">
+                  <span>⚠</span> {errors.password}
+                </p>
               )}
             </div>
 
             {/* Submit */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`w-full py-3.5 rounded-xl font-bold text-white text-sm tracking-wide transition-all mt-2 ${
-                isLoading
-                  ? 'bg-blue-400 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-700 active:scale-95 shadow-lg shadow-blue-200'
-              }`}
-            >
-              {isLoading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Signing in…
-                </span>
-              ) : (
-                'Sign In & Start Learning'
-              )}
-            </button>
+            <div className="animate-fadeInUp delay-400 pt-2">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`btn-glow w-full py-4 rounded-xl font-bold text-white text-sm tracking-wide transition-all duration-300 ${
+                  isLoading
+                    ? 'bg-indigo-400 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25'
+                }`}
+              >
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="spinner h-5 w-5" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Signing in…
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    Sign In & Start Learning
+                    <span>→</span>
+                  </span>
+                )}
+              </button>
+            </div>
           </form>
 
-          <p className={`text-center text-xs mt-6 ${d ? 'text-slate-500' : 'text-gray-400'}`}>
+          <p className={`text-center text-xs mt-8 ${d ? 'text-slate-500' : 'text-gray-400'}`}>
             Your session data stays local and resets on logout.
           </p>
         </div>

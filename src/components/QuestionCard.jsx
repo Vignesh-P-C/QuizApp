@@ -7,10 +7,25 @@ export default function QuestionCard({
   const d = isDark;
 
   return (
-    <div>
-      <h2 className={`text-xl font-bold mb-6 leading-relaxed ${d ? 'text-white' : 'text-gray-900'}`}>
+    <div className="question-enter">
+      <h2 className={`text-xl font-bold mb-6 leading-relaxed typewriter-text ${d ? 'text-white' : 'text-gray-900'}`}>
         {question.question}
       </h2>
+
+      {/* Keyboard hint */}
+      <p className={`text-xs font-medium mb-4 ${d ? 'text-slate-500' : 'text-gray-400'}`}>
+        Press <kbd className={`px-1.5 py-0.5 rounded text-xs font-bold ${
+          d ? 'bg-slate-700 text-slate-300' : 'bg-gray-200 text-gray-600'
+        }`}>1</kbd>–<kbd className={`px-1.5 py-0.5 rounded text-xs font-bold ${
+          d ? 'bg-slate-700 text-slate-300' : 'bg-gray-200 text-gray-600'
+        }`}>4</kbd> to select, <kbd className={`px-1.5 py-0.5 rounded text-xs font-bold ${
+          d ? 'bg-slate-700 text-slate-300' : 'bg-gray-200 text-gray-600'
+        }`}>←</kbd> <kbd className={`px-1.5 py-0.5 rounded text-xs font-bold ${
+          d ? 'bg-slate-700 text-slate-300' : 'bg-gray-200 text-gray-600'
+        }`}>→</kbd> to navigate, <kbd className={`px-1.5 py-0.5 rounded text-xs font-bold ${
+          d ? 'bg-slate-700 text-slate-300' : 'bg-gray-200 text-gray-600'
+        }`}>Enter</kbd> to submit
+      </p>
 
       <div className="space-y-3">
         {question.options.map((option, index) => {
@@ -19,20 +34,20 @@ export default function QuestionCard({
             <button
               key={index}
               onClick={() => onSelectAnswer(option)}
-              className={`w-full p-4 rounded-xl border-2 transition-all text-left font-medium text-sm ${
+              className={`option-enter w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] text-left font-medium text-sm ${
                 isSelected
                   ? d
-                    ? 'border-blue-500 bg-blue-900/40 text-blue-200'
-                    : 'border-blue-600 bg-blue-50 text-blue-900'
+                    ? 'border-indigo-500 bg-indigo-900/40 text-indigo-200 option-selected'
+                    : 'border-indigo-600 bg-indigo-50 text-indigo-900 option-selected'
                   : d
-                  ? 'border-slate-600 bg-slate-700 text-slate-200 hover:border-slate-500 hover:bg-slate-650'
-                  : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300 hover:bg-gray-50'
+                  ? 'border-slate-600 bg-slate-700/50 text-slate-200 hover:border-indigo-500 hover:bg-slate-700'
+                  : 'border-gray-200 bg-white/80 text-gray-800 hover:border-indigo-400 hover:bg-gray-50'
               }`}
             >
               <span
-                className={`inline-flex w-7 h-7 rounded-full items-center justify-center text-xs font-bold mr-3 shrink-0 ${
+                className={`inline-flex w-8 h-8 rounded-full items-center justify-center text-sm font-bold mr-3 shrink-0 transition-all duration-200 ${
                   isSelected
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
                     : d
                     ? 'bg-slate-600 text-slate-300'
                     : 'bg-gray-100 text-gray-500'
