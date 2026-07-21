@@ -102,8 +102,8 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                   errors.name
                     ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
-                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
+                    ? 'border-slate-600 bg-slate-700/70 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/60 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.name && (
@@ -131,8 +131,8 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                   errors.email
                     ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
-                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
+                    ? 'border-slate-600 bg-slate-700/70 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/60 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.email && (
@@ -160,8 +160,8 @@ export default function Login({ onLogin, isDark, onToggleDark }) {
                   errors.password
                     ? 'border-red-500 bg-red-50/50 shake'
                     : d
-                    ? 'border-slate-600 bg-slate-700/50 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
-                    : 'border-gray-200 bg-white/50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
+                    ? 'border-slate-600 bg-slate-700/70 text-white placeholder-slate-400 focus:border-indigo-500 focus:bg-slate-700 focus:shadow-lg focus:shadow-indigo-500/10'
+                    : 'border-gray-200 bg-white/60 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10'
                 }`}
               />
               {errors.password && (

@@ -185,7 +185,7 @@ export default function Result({
 
           {/* Summary - Scroll Animation */}
           <div
-            className={`animate-on-scroll scale mb-6 p-5 rounded-xl ${
+            className={`animate-on-scroll mb-6 p-5 rounded-xl ${
               d ? 'bg-blue-900/20 border border-blue-800/50' : 'bg-blue-50'
             }`}
           >

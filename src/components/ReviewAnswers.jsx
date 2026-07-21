@@ -30,10 +30,10 @@ export default function ReviewAnswers({ questions, answers, isDark }) {
                 className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm ${
                   isCorrect
                     ? d
-                      ? 'bg-green-800 text-green-200'
+                      ? 'bg-green-800 text-green-100'
                       : 'bg-green-500 text-white'
                     : d
-                      ? 'bg-red-800 text-red-200'
+                      ? 'bg-red-800 text-red-100'
                       : 'bg-red-500 text-white'
                 }`}
               >
@@ -64,19 +64,19 @@ export default function ReviewAnswers({ questions, answers, isDark }) {
                     let optionStyle = '';
                     if (isCorrectAnswer && isUserSelection) {
                       optionStyle = d
-                        ? 'border-green-500 bg-green-900/40 text-green-200'
+                        ? 'border-green-500 bg-green-900/60 text-green-100'
                         : 'border-green-500 bg-green-100 text-green-900';
                     } else if (isCorrectAnswer && !isUserSelection) {
                       optionStyle = d
-                        ? 'border-green-700 bg-green-900/20 text-green-300'
+                        ? 'border-green-700 bg-green-900/30 text-green-200'
                         : 'border-green-400 bg-green-50 text-green-700';
                     } else if (isUserSelection && !isCorrectAnswer) {
                       optionStyle = d
-                        ? 'border-red-500 bg-red-900/40 text-red-200 line-through'
+                        ? 'border-red-500 bg-red-900/60 text-red-100 line-through'
                         : 'border-red-500 bg-red-100 text-red-900 line-through';
                     } else {
                       optionStyle = d
-                        ? 'border-slate-600 bg-slate-700 text-slate-400'
+                        ? 'border-slate-600 bg-slate-700 text-slate-300'
                         : 'border-gray-200 bg-white text-gray-500';
                     }
 
@@ -108,19 +108,19 @@ export default function ReviewAnswers({ questions, answers, isDark }) {
                 <div className="mt-3 flex gap-2">
                   {isCorrect ? (
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                      d ? 'bg-green-900 text-green-300' : 'bg-green-100 text-green-700'
+                      d ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-700'
                     }`}>
                       ✓ Correct
                     </span>
                   ) : isUnanswered ? (
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                      d ? 'bg-yellow-900 text-yellow-300' : 'bg-yellow-100 text-yellow-700'
+                      d ? 'bg-yellow-900 text-yellow-200' : 'bg-yellow-100 text-yellow-700'
                     }`}>
                       • Unanswered
                     </span>
                   ) : (
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                      d ? 'bg-red-900 text-red-300' : 'bg-red-100 text-red-700'
+                      d ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-700'
                     }`}>
                       ✗ Incorrect
                     </span>

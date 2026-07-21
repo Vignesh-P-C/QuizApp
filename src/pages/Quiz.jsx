@@ -277,7 +277,7 @@ export default function Quiz({ questions, onNavigate, onSubmitQuiz, isDark }) {
                           ? 'bg-blue-600 text-white'
                           : answers[q.id]
                           ? d
-                            ? 'bg-green-800 text-green-200'
+                            ? 'bg-green-800 text-green-100'
                             : 'bg-green-100 text-green-700'
                           : d
                           ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'

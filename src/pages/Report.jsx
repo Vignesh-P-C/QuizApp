@@ -148,7 +148,7 @@ export default function Report({ sessionHistory, onNavigate, userName, isDark })
                               key={i}
                               className={`text-xs font-semibold px-2 py-0.5 rounded ${
                                 d
-                                  ? 'bg-blue-900 text-blue-300'
+                                  ? 'bg-blue-900 text-blue-200'
                                   : 'bg-blue-50 text-blue-700'
                               }`}
                             >

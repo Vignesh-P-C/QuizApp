@@ -73,18 +73,18 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
                     className={`hover-card p-4 rounded-xl border-2 transition-all text-left wobble-icon ${
                       selected
                         ? d
-                          ? 'border-indigo-500 bg-indigo-900/30'
-                          : 'border-indigo-600 bg-indigo-50'
+                          ? 'border-indigo-400 bg-indigo-800/70 text-white'
+                          : 'border-indigo-500 bg-indigo-100 text-indigo-900'
                         : d
-                        ? 'border-slate-600 bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm'
-                        : 'border-gray-200 bg-white/80 hover:border-gray-300 backdrop-blur-sm'
+                        ? 'border-slate-600 bg-slate-700/50 text-slate-200 hover:border-indigo-400 hover:bg-slate-600/80'
+                        : 'border-gray-200 bg-white/80 text-gray-800 hover:border-indigo-400 hover:bg-indigo-50/60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-300 ${
                           selected
-                            ? 'border-indigo-600 bg-indigo-600 scale-110'
+                            ? 'border-white bg-indigo-500 scale-110'
                             : d
                             ? 'border-slate-500'
                             : 'border-gray-300'
@@ -99,8 +99,8 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
                       <span                          className={`font-semibold text-sm ${
                             selected
                               ? d
-                                ? 'text-indigo-300'
-                                : 'text-indigo-700'
+                                ? 'text-white'
+                                : 'text-indigo-900'
                               : d
                               ? 'text-slate-200'
                               : 'text-gray-900'
@@ -116,7 +116,7 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
           </div>
 
           <div              className={`p-4 rounded-xl mb-6 text-sm animate-fadeInUp delay-300 ${
-                d ? 'bg-indigo-900/20 border border-indigo-800/50 text-indigo-300' : 'bg-indigo-50 text-indigo-800'
+                d              ? 'bg-indigo-900/20 border border-indigo-800/50 text-indigo-200' : 'bg-indigo-50 text-indigo-800'
               }`}
           >
             📝 You'll answer <strong>15 questions (3 per chapter)</strong> from your selected subject(s).
@@ -127,7 +127,7 @@ export default function Entry({ onNavigate, onStartQuiz, isDark }) {
             disabled={selectedSubjects.length === 0}
             className={`btn-glow w-full font-bold py-3.5 px-4 rounded-xl transition-all text-sm animate-fadeInUp delay-400 ${
               selectedSubjects.length === 0
-                ? 'bg-indigo-300 cursor-not-allowed text-white'
+                ? 'bg-indigo-300 cursor-not-allowed text-gray-800'
                 : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/25'
             }`}
           >

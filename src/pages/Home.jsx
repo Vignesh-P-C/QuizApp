@@ -72,7 +72,7 @@ export default function Home({
             onClick={onLogout}
             className={`text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 ${
               d
-                ? 'bg-red-900/70 text-red-300 hover:bg-red-800'
+                ? 'bg-red-900/80 text-red-200 hover:bg-red-800'
                 : 'bg-red-50/80 text-red-600 hover:bg-red-100 backdrop-blur-sm'
             }`}
           >
